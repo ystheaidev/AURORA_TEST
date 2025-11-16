@@ -3,14 +3,11 @@ uvicorn[standard]==0.30.6
 requests>=2.32.3
 python-dotenv==1.0.1
 
-# Vector/LLM stack
 faiss-cpu==1.12.0
 langchain-huggingface==0.1.0
 sentence-transformers==2.7.0
 
-# CPU-only PyTorch wheels (much smaller than CUDA)
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.2.2
+torch==2.7.1+cpu
 
-# Server
 gunicorn==21.2.0

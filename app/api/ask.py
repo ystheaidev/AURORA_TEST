@@ -33,7 +33,7 @@ async def startup_event():
     items = fetch_messages()
     if not items:
         # We still allow the app to start; /ask will reply "I don't know."
-        print("⚠️ No items fetched at startup.")
+        print("No items fetched at startup.")
         return
     build_index(items)
 
@@ -69,8 +69,7 @@ def _structured_fallback_answer(picks, person_hint: Optional[str]) -> str:
 
 def answer_with_openrouter(context: str, question: str) -> str:
     """
-    Use OpenRouter (OpenAI-compatible) to generate an answer from the provided context.
-    If OPENROUTER_API_KEY is not set, return sentinel '__NO_LLM__'.
+    Use LLM generate an answer from the provided context.
     """
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
@@ -82,7 +81,7 @@ def answer_with_openrouter(context: str, question: str) -> str:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "http://localhost:8000",
+        "HTTP-Referer": "https://aurora-test-nw4g.onrender.com",
         "X-Title": "Aurora QA",
     }
 
